@@ -85,9 +85,9 @@
   }
 
 ```
+```
 
-
-```void drawWinningLine(Canvas canvas, List<int> winningLine, Paint paint) {
+void drawWinningLine(Canvas canvas, List<int> winningLine, Paint paint) {
     if (winningLine == null) return;
 
     double x1 = 0, y1 = 0;
