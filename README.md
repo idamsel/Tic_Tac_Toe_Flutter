@@ -3,7 +3,7 @@
   This project is about how can we make Tic Tac Toe game in Flutter using canvas with winnig line showing. 
   In this code no dependency is require. Simple and streight forward game using simple codes in canvas. Let's start how can we make it.
   
-  Here I highlight UI part. And for logic you can go with my code which I upload here.
+  Here I highlight UI part. And for logic you can go with my code which I uploaded here.
   
  <p align="center">
   <img src="board.png" width="150"> </p>
@@ -86,8 +86,9 @@
 
 ```
 This code output shown every angle of winning lines.
-
-  <img src="slantwin.png" width="150">   <img src="verticalwin.png" width="150"> 
+ 
+ <p align = "center">
+  <img src="slantwin.png" width="150">   <img src="verticalwin.png" width="150"> </p>
  
 
 ```
