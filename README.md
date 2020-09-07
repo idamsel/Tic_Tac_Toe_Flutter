@@ -5,6 +5,11 @@
   
   Here I highlight UI part. And for logic you can go with my code which I upload here.
   
+ <p align="center">
+  <img src="board.png" width="150"> </p>
+  
+  
+  
   ```
     //1st horizontal line.
     canvas.drawLine(
@@ -34,6 +39,10 @@
     );
 
 ```
+<p align="center">
+  <img src="drawO.png" width="150"> </p>
+ 
+
 ```
    //Draw O.
 
@@ -46,6 +55,11 @@
   }
 
 ```
+
+<p align="center">
+  <img src="drawX.png" width="150"> </p>
+ 
+ 
 ```
  //Draw X.
 
@@ -69,3 +83,44 @@
 
     canvas.drawLine(Offset(x1, y1), Offset(x2, y2), paint);
   }
+
+```
+
+
+```void drawWinningLine(Canvas canvas, List<int> winningLine, Paint paint) {
+    if (winningLine == null) return;
+
+    double x1 = 0, y1 = 0;
+    double x2 = 0, y2 = 0;
+
+    //determine the direction.
+    int firstIndex = winningLine.first;
+    int lastIndex = winningLine.last;
+
+    if (firstIndex % 3 == lastIndex % 3) {
+      //vertical line.
+      x1 = x2 = firstIndex % 3 * _dividedSize + _dividedSize / 2;
+      y1 = STROKE_WIDTH;
+      y2 = _dividedSize * 3 - STROKE_WIDTH;
+    } else if (firstIndex ~/ 3 == lastIndex ~/ 3) {
+      //horizontal line.
+      x1 = STROKE_WIDTH;
+      x2 = _dividedSize * 3 - STROKE_WIDTH;
+      y1 = y2 = firstIndex ~/ 3 * _dividedSize + _dividedSize / 2;
+    } else {
+      //diagonal line.
+      if (firstIndex == 0) {
+        x1 = y1 = DOUBLE_STROKE_WIDTH;
+        x2 = y2 = _dividedSize * 3 - DOUBLE_STROKE_WIDTH;
+      } else {
+        x1 = _dividedSize * 3 - DOUBLE_STROKE_WIDTH;
+        y1 = DOUBLE_STROKE_WIDTH;
+        x2 = DOUBLE_STROKE_WIDTH;
+        y2 = _dividedSize * 3 - DOUBLE_STROKE_WIDTH;
+      }
+    }
+
+    //draw the winning line.
+    canvas.drawLine(Offset(x1, y1), Offset(x2, y2), paint);
+  }
+  ```
