@@ -1,16 +1,71 @@
-# playtictactoe
+# Tic_Tac_Toe_In_Flutter
 
-A new Flutter project.
+  This project is about how can we make Tic Tac Toe game in Flutter using canvas with winnig line showing. 
+  In this code no dependency is require. Simple and streight forward game using simple codes in canvas. Let's start how can we make it.
+  
+  Here I highlight UI part. And for logic you can go with my code which I upload here.
+  
+  ```
+    //1st horizontal line.
+    canvas.drawLine(
+      Offset(STROKE_WIDTH, _dividedSize - HALF_STROKE_WIDTH),
+      Offset(size.width - STROKE_WIDTH, _dividedSize - HALF_STROKE_WIDTH),
+      blackPaint,
+    );
 
-## Getting Started
+    //2nd horizontal line.
+    canvas.drawLine(
+        Offset(STROKE_WIDTH, _dividedSize * 2 - HALF_STROKE_WIDTH),
+        Offset(size.width - STROKE_WIDTH, _dividedSize * 2 - HALF_STROKE_WIDTH),
+        blackPaint);
 
-This project is a starting point for a Flutter application.
+    //1st vertical line.
+    canvas.drawLine(
+      Offset(_dividedSize - HALF_STROKE_WIDTH, STROKE_WIDTH),
+      Offset(_dividedSize - HALF_STROKE_WIDTH, size.height - STROKE_WIDTH),
+      blackPaint,
+    );
 
-A few resources to get you started if this is your first Flutter project:
+    //2nd vertical line.
+    canvas.drawLine(
+      Offset(_dividedSize * 2 - HALF_STROKE_WIDTH, STROKE_WIDTH),
+      Offset(_dividedSize * 2 - HALF_STROKE_WIDTH, size.height - STROKE_WIDTH),
+      blackPaint,
+    );
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+```
+```
+   //Draw O.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  void drawNought(Canvas canvas, int index, Paint paint) {
+    double left = (index % 3) * _dividedSize + DOUBLE_STROKE_WIDTH * 2;
+    double top = (index ~/ 3) * _dividedSize + DOUBLE_STROKE_WIDTH * 2;
+    double noughtSize = _dividedSize - DOUBLE_STROKE_WIDTH * 4;
+
+    canvas.drawOval(Rect.fromLTWH(left, top, noughtSize, noughtSize), paint);
+  }
+
+```
+```
+ //Draw X.
+
+  void drawCross(Canvas canvas, int index, Paint paint) {
+    double x1, y1;
+    double x2, y2;
+
+    x1 = (index % 3) * _dividedSize + DOUBLE_STROKE_WIDTH * 2;
+    y1 = (index ~/ 3) * _dividedSize + DOUBLE_STROKE_WIDTH * 2;
+
+    x2 = (index % 3 + 1) * _dividedSize - DOUBLE_STROKE_WIDTH * 2;
+    y2 = (index ~/ 3 + 1) * _dividedSize - DOUBLE_STROKE_WIDTH * 2;
+
+    canvas.drawLine(Offset(x1, y1), Offset(x2, y2), paint);
+
+    x1 = (index % 3 + 1) * _dividedSize - DOUBLE_STROKE_WIDTH * 2;
+    y1 = (index ~/ 3) * _dividedSize + DOUBLE_STROKE_WIDTH * 2;
+
+    x2 = (index % 3) * _dividedSize + DOUBLE_STROKE_WIDTH * 2;
+    y2 = (index ~/ 3 + 1) * _dividedSize - DOUBLE_STROKE_WIDTH * 2;
+
+    canvas.drawLine(Offset(x1, y1), Offset(x2, y2), paint);
+  }
