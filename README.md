@@ -85,6 +85,15 @@
   }
 
 ```
+This code output shown every angle of winning lines.
+
+<p align="left">
+  <img src="slantwin.png" width="150"> </p>
+  
+  
+<p align="right">
+  <img src="verticalwin.png" width="150"> </p>
+
 ```
 
 void drawWinningLine(Canvas canvas, List<int> winningLine, Paint paint) {
